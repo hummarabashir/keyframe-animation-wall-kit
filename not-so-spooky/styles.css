@@ -2,13 +2,14 @@
 
 body{
     color: transparent;
-    background: conic-gradient(
+    /* background: conic-gradient(
       #D9D7F1 12%, 
       #BAABDA 12%, #BAABDA 33%, 
       #E7FBBE 33%, #E7FBBE 55%, 
       #FFCBCB 55%, #FFCBCB 70%, 
       #B5DEFF 70%, #B5DEFF 87%, 
-      #F7D1BA 87%);
+      #F7D1BA 87%); */
+      background-color: hsl(282deg 24% 39%);
 }
 .ghost{
     width: 150px;
@@ -60,7 +61,8 @@ body{
 .eye {
     width: 30px;
     height: 30px;
-    background-color: #2A3A4A;
+    /* background-color: #2A3A4A; */
+    background-color: hsl(282deg 24% 39%);;
     border-radius: 50%;
     position: absolute;
 }
@@ -75,7 +77,7 @@ body{
 .mouth{
     width: 40px;
     height: 20px;
-    background-color: #2A3A4A;
+    background-color: hsl(282deg 24% 39%);
     border-bottom-left-radius: 110px;
     border-bottom-right-radius: 110px;
     position: absolute;
@@ -183,3 +185,64 @@ body{
       background-position: 0 0;
     }
   } */
+
+  .cloud {
+    --cloud-colour: #ffffff;
+    --cloud-factor: 0.8rem;
+    --cloud-opacity: 0.4;
+    position: absolute;
+    top: 20%;
+    left: calc(-20 * var(--cloud-factor));
+    right: auto;
+    background-color: var(--cloud-colour);
+    opacity: var(--cloud-opacity);
+    width: calc(20 * var(--cloud-factor));
+    height: calc(6 * var(--cloud-factor));
+    border-radius: calc(3 * var(--cloud-factor));
+    animation: cloudFloat 21s linear infinite;
+  }
+  .cloud:before {
+    content: "";
+    position: absolute;
+    left: calc(3.2 * var(--cloud-factor));
+    bottom: calc(3.2 * var(--cloud-factor));
+    background-color: var(--cloud-colour);
+    width: calc(8 * var(--cloud-factor));
+    height: calc(8 * var(--cloud-factor));
+    border-radius: 50%;
+  }
+  .cloud:after {
+    content: "";
+    position: absolute;
+    left: calc(8.7 * var(--cloud-factor));
+    bottom: calc(2.2 * var(--cloud-factor));
+    background-color: var(--cloud-colour);
+    width: calc(7.5 * var(--cloud-factor));
+    height: calc(7.5 * var(--cloud-factor));
+    border-radius: 50%;
+  }
+  .cloud:nth-child(2) {
+    --cloud-factor: 0.5rem;
+    --cloud-opacity: 0.5;
+    top: 13%;
+    left: -50%;
+    right: auto;
+    animation: cloudFloat 25s linear infinite;
+  }
+  .cloud:nth-child(3) {
+    --cloud-factor: 0.4rem;
+    --cloud-opacity: 0.4;
+    top: 40%;
+    left: -50%;
+    right: auto;
+    animation: cloudFloat 19s linear infinite;
+  }
+  
+  @keyframes cloudFloat {
+      0% {
+          transform: translate3d(0, 0, 0);
+      }
+      100% {
+          transform: translate3d(150vmax, 0, 0);
+      }
+  }
